@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { withPrefix } from 'gatsby'
 
 import React from 'react'
+import cv from "../files/CV-ENG.pdf";
 
 import axios from 'axios'
 class Main extends React.Component {
@@ -58,7 +59,7 @@ class Main extends React.Component {
           <ul className="icons">
             <li>
             <a
-              href={withPrefix('/CV-ENG.pdf')}
+              href={cv}
               className="icon fa-file-pdf-o"
               target="_blank">
                     <span className="label">CV</span>
