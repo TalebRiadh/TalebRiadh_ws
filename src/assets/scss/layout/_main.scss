@@ -6,6 +6,7 @@
 
 /* Main */
 
+
 	#main {
 		@include vendor('flex-grow', '1');
 		@include vendor('flex-shrink', '1');
@@ -17,6 +18,12 @@
 		max-width: 100%;
 		z-index: 3;
 		display: none;
+		ul {
+			columns: 2;
+			-webkit-columns: 2;
+			-moz-columns: 2;
+		
+		  }
 
 		article {
 			@include vendor('transform', 'translateY(0.25rem)');

@@ -1,11 +1,32 @@
 import PropTypes from 'prop-types'
-import React from 'react'
-import pic01 from '../images/pic01.jpg'
-import pic02 from '../images/pic02.jpg'
-import pic03 from '../images/pic03.jpg'
+import { withPrefix } from 'gatsby'
 
+import React from 'react'
+
+import axios from 'axios'
 class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+    };
+  } 
+   style ={
+
+  }
+  componentDidMount() {
+    axios
+    .get(`https://api.github.com/users/TalebRiadh/repos`)
+    .then(res =>{
+      this.setState({
+        data: res.data
+      })
+    })  
+  }
+ 
+
   render() {
+    const  hits  = this.state.data;
     let close = (
       <div
         className="close"
@@ -29,29 +50,21 @@ class Main extends React.Component {
           style={{ display: 'none' }}
         >
           <h2 className="major">Intro</h2>
-          <span className="image main">
-            <img src={pic01} alt="" />
-          </span>
+
           <p>
-            Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin
-            aliquam facilisis ante interdum congue. Integer mollis, nisl amet
-            convallis, porttitor magna ullamcorper, amet egestas mauris. Ut
-            magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.
-            By the way, check out my <a href="#work">awesome work</a>.
+          self-learning software and web technologies through research & development, i'm not the best at academic, just a curious boy who admire what are happening in web and technologies that relationed with    
           </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora
-            torquent per conubia nostra, per inceptos himenaeos. Etiam tristique
-            libero eu nibh porttitor fermentum. Nullam venenatis erat id
-            vehicula viverra. Nunc ultrices eros ut ultricies condimentum.
-            Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae
-            dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in
-            lectus. Pellentesque habitant morbi tristique senectus et netus et
-            malesuada fames ac turpis egestas. In non lorem sit amet elit
-            placerat maximus. Pellentesque aliquam maximus risus, vel sed
-            vehicula.
-          </p>
+
+          <ul className="icons">
+            <li>
+            <a
+              href={withPrefix('/CV-ENG.pdf')}
+              className="icon fa-file-pdf-o"
+              target="_blank">
+                    <span className="label">CV</span>
+                </a>
+            </li>
+          </ul>
           {close}
         </article>
 
@@ -62,25 +75,31 @@ class Main extends React.Component {
           }`}
           style={{ display: 'none' }}
         >
-          <h2 className="major">Work</h2>
-          <span className="image main">
-            <img src={pic02} alt="" />
-          </span>
-          <p>
-            Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu,
-            at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent
-            urna nisi, fringila lorem et vehicula lacinia quam. Integer
-            sollicitudin mauris nec lorem luctus ultrices.
-          </p>
-          <p>
-            Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
-            libero. Mauris aliquet magna magna sed nunc rhoncus pharetra.
-            Pellentesque condimentum sem. In efficitur ligula tate urna.
-            Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor.
-            Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis
-            libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat
-            tempus.
-          </p>
+          <h2 className="major">Works  <a
+                href="https://github.com/TalebRiadh"
+                className="icon fa-github">
+                <span className="label">GitHub</span>
+              </a></h2>
+
+          <h3>Repositories</h3>
+
+          <ul>
+        {hits.map((hit,index) =>
+          <li key={index}>
+            <a href={hit.html_url}>{hit.name}</a> - <small>{hit.language}</small>
+          </li>
+        )}
+      </ul>
+      <h3>Published</h3>
+        <ul>
+          <li>
+            <a href="https://red-prop.com">Red-Prop</a>-<small>Symfony</small>
+          </li>
+          <li>
+            <a href="https://tsar-resort.netlify.com">TsaR-resort(Clone)</a>-<small>Reactjs</small>
+          </li>
+      </ul>
+      
           {close}
         </article>
 
@@ -92,18 +111,31 @@ class Main extends React.Component {
           style={{ display: 'none' }}
         >
           <h2 className="major">About</h2>
-          <span className="image main">
-            <img src={pic03} alt="" />
-          </span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent
-            eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam
-            erat volutpat. Praesent urna nisi, fringila lorem et vehicula
-            lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.
-            Aliquam libero et malesuada fames ac ante ipsum primis in faucibus.
-            Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit
-            amet.
-          </p>
+
+          <h3>Future Ventures (Teach myself in 2019-2020)
+          </h3>
+        <ul>
+        <li>
+            React Native for Mobile application
+          </li>
+          <li>
+            Data Visualization with D3.JS
+          </li>
+          <li>
+          Scalable distributed systems (microservices)
+          </li>
+          <li>
+            Machine learning with Tenserflow.js
+          </li>
+          <li>
+            Learn graphql
+          </li>
+          <li>
+            Typescript
+          </li>
+
+          
+      </ul>
           {close}
         </article>
 
@@ -115,53 +147,26 @@ class Main extends React.Component {
           style={{ display: 'none' }}
         >
           <h2 className="major">Contact</h2>
-          <form method="post" action="#">
-            <div className="field half first">
-              <label htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" />
-            </div>
-            <div className="field half">
-              <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email" />
-            </div>
-            <div className="field">
-              <label htmlFor="message">Message</label>
-              <textarea name="message" id="message" rows="4"></textarea>
-            </div>
-            <ul className="actions">
-              <li>
-                <input type="submit" value="Send Message" className="special" />
-              </li>
-              <li>
-                <input type="reset" value="Reset" />
-              </li>
-            </ul>
-          </form>
+          <h4>E-mail: talebriadhdz@gmail.com</h4>
           <ul className="icons">
             <li>
               <a
-                href="https://twitter.com/HuntaroSan"
+                href="https://twitter.com/TsaRiadh"
                 className="icon fa-twitter"
               >
                 <span className="label">Twitter</span>
               </a>
             </li>
             <li>
-              <a href="https://codebushi.com" className="icon fa-facebook">
-                <span className="label">Facebook</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://codebushi.com" className="icon fa-instagram">
-                <span className="label">Instagram</span>
-              </a>
-            </li>
-            <li>
               <a
-                href="https://github.com/codebushi/gatsby-starter-dimension"
-                className="icon fa-github"
-              >
+                href="https://github.com/TalebRiadh"
+                className="icon fa-github">
                 <span className="label">GitHub</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/taleb.riadh/" className="icon fa-instagram">
+                <span className="label">Instagram</span>
               </a>
             </li>
           </ul>

@@ -16,7 +16,7 @@
 			@include vendor('pointer-events', 'none');
 			background-image: url('../../images/overlay.png');
 			background-color: _palette(bg-overlay);
-			border-radius: _size(border-radius);
+			border-radius: 0;
 			content: '';
 			display: block;
 			height: 100%;

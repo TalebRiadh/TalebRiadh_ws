@@ -36,7 +36,6 @@
 			'background-color #{_duration(transition)} ease-in-out',
 			'border-bottom-color #{_duration(transition)} ease-in-out'
 		));
-		border-bottom: dotted 1px _palette(fg-light);
 		text-decoration: none;
 		color: inherit;
 
@@ -143,7 +142,7 @@
 
 	code {
 		background: _palette(border-bg);
-		border-radius: _size(border-radius);
+		border-radius: 0;
 		font-family: _font(family-fixed);
 		font-size: 0.9rem;
 		margin: 0 0.25rem;
