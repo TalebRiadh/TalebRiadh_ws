@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "Taleb Riadh TsaR",
     author: "Taleb Riadh",
-    description: "Taleb Riadh website based on Dimension by HTML5 UP"
+    description: "Taleb Riadh Junior web developer fullstack"
   },
   plugins: [
     'gatsby-plugin-react-helmet',
