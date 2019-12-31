@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types'
-import { withPrefix } from 'gatsby'
-
 import React from 'react'
 import cv from "../files/CV-ENG.pdf";
 
@@ -29,12 +27,13 @@ class Main extends React.Component {
   render() {
     const  hits  = this.state.data;
     let close = (
-      <div
+      <a
+      href="#"
         className="close"
         onClick={() => {
           this.props.onCloseArticle()
         }}
-      ></div>
+      >close</a>
     )
 
     return (
@@ -61,7 +60,8 @@ class Main extends React.Component {
             <a
               href={cv}
               className="icon fa-file-pdf-o"
-              target="_blank">
+              target="_blank"
+              rel="noopener noreferrer">
                     <span className="label">CV</span>
                 </a>
             </li>
